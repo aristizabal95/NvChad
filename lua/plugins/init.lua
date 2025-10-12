@@ -120,6 +120,21 @@ return {
       vim.keymap.set('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
     end,
   },
+  {
+    "sindrets/winshift.nvim",
+    cmd = "WinShift",
+    keys = {
+      { "<leader>wm", "<cmd>WinShift<cr>", desc = "WinShift mode" },
+      { "<leader>wh", "<cmd>WinShift left<cr>", desc = "Move window left" },
+      { "<leader>wj", "<cmd>WinShift down<cr>", desc = "Move window down" },
+      { "<leader>wk", "<cmd>WinShift up<cr>", desc = "Move window up" },
+      { "<leader>wl", "<cmd>WinShift right<cr>", desc = "Move window right" },
+      { "<leader>wx", "<cmd>WinShift swap<cr>", desc = "Swap windows" },
+    },
+    config = function()
+      require("winshift").setup({})
+    end,
+  },
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 

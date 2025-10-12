@@ -7,6 +7,19 @@ return {
     lazy = true,
     -- Copied from LazyVim/lua/lazyvim/plugins/extras/dap/core.lua and
     -- modified.
+    config = function()
+      -- Define highlight groups for DAP signs
+      vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#c02c35', bg = '#31353f' })
+      vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef', bg = '#31353f' })
+      vim.api.nvim_set_hl(0, 'DapStopped', { ctermbg = 0, fg = '#98c379', bg = '#31353f' })
+
+      -- Define signs for DAP
+      vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+      vim.fn.sign_define('DapBreakpointCondition', { text = '◆', texthl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+      vim.fn.sign_define('DapBreakpointRejected', { text = '○', texthl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+      vim.fn.sign_define('DapLogPoint', { text = '◉', texthl = 'DapLogPoint', numhl = 'DapLogPoint' })
+      vim.fn.sign_define('DapStopped', { text = '▶', texthl = 'DapStopped', numhl = 'DapStopped' })
+    end,
     keys = {
       {
         "<leader>db",

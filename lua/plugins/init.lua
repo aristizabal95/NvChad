@@ -135,19 +135,52 @@ return {
       require("winshift").setup({})
     end,
   },
-  {
-    "gmr458/vscode_modern_theme.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-        require("vscode_modern").setup({
-            cursorline = true,
-            transparent_background = false,
-            nvim_tree_darker = true,
-        })
-        vim.cmd.colorscheme("vscode_modern")
-    end,
-  },
+  -- Disabled in favor of tokyonight
+  -- {
+  --   "gmr458/vscode_modern_theme.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --       require("vscode_modern").setup({
+  --           cursorline = true,
+  --           transparent_background = false,
+  --           nvim_tree_darker = true,
+  --       })
+  --       vim.cmd.colorscheme("vscode_modern")
+  --   end,
+  -- },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("tokyonight").setup({
+  --       style = "night", -- Options: "storm", "moon", "night", "day"
+  --       transparent = false,
+  --       terminal_colors = true,
+  --       styles = {
+  --         comments = { italic = true },
+  --         keywords = { italic = false },
+  --         functions = {},
+  --         variables = {},
+  --       },
+  --       on_highlights = function(hl, c)
+  --         -- Custom highlight overrides similar to your base46 config
+  --         hl["@keyword.exception"] = { link = "Conditional" }
+  --         hl["@variable.member"] = { fg = c.blue }
+  --       end,
+  --     })
+  --     vim.cmd.colorscheme("tokyonight")
+  --   end,
+  -- },
+  -- {
+  --   "askfiy/visual_studio_code",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd([[colorscheme visual_studio_code]])
+  --   end,
+  -- },
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 

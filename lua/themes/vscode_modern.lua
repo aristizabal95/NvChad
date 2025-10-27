@@ -20,7 +20,7 @@ M.base_30 = {
   pink = "#C586C0",
   line = "#2B2B2B", -- for lines like vertsplit
   green = "#4EC9B0",
-  green1 = "#2EA043",
+  green1 = "#5EA063",
   vibrant_green = "#5fd8af",
   blue = "#569CD6",
   nord_blue = "#0078D4",
@@ -59,13 +59,16 @@ M.base_16 = {
 M.polish_hl = {
   treesitter = {
     ["@variable.parameter"] = { fg = M.base_30.cyan },
-    ["@keyword"] = { fg = M.base_30.blue },
+    ["@keyword"] = { fg = M.base_16.base0E },
     ["@variable"] = { fg = M.base_30.cyan },
     ["@variable.member.key"] = { fg = M.base_30.cyan },
     ["@keyword.return"] = { fg = M.base_16.base0E },
-    ["@keyword.pass"] = { fg = M.base_16.base0E },
+    ["@keyword.python"] = { fg = M.base_16.base0E },
     ["@keyword.function"] = { fg = M.base_30.blue },
     ["@function"] = { fg = M.base_30.yellow },
+    ["@function.call"] = { fg = M.base_30.yellow },
+    ["@function.method.call"] = { fg = M.base_30.yellow },
+    ["@function.builtin"] = { fg = M.base_30.yellow },
     ["@type"] = { fg = M.base_30.green },
     ["@type.builtin"] = { fg = M.base_30.green },
     ["@constant"] = { fg = M.base_30.teal },
@@ -75,7 +78,9 @@ M.polish_hl = {
     ["Special"] = { fg = M.base_30.yellow },
     ["@string"] = { fg = M.base_16.base09 },
     ["@punctuation.delimiter"] = { fg = M.base_30.white },
-    ["Boolean"] = {fg = M.base_30.blue },
+    ["@constructor.python"] = { fg = M.base_30.green },
+    ["Boolean"] = { fg = M.base_30.blue },
+    ["@comment"] = { fg = M.base_30.green1 },
   },
 }
 

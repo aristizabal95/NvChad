@@ -25,7 +25,7 @@ M.base_30 = {
   blue = "#569CD6",
   nord_blue = "#0078D4",
   yellow = "#DCDCAA",
-  sun = "#e6e099",
+  sun = "#e6ffc9",
   purple = "#C586C0",
   dark_purple = "#b77bdf",
   teal = "#4FC1FF",
@@ -81,6 +81,11 @@ M.polish_hl = {
     ["@constructor.python"] = { fg = M.base_30.green },
     ["Boolean"] = { fg = M.base_30.blue },
     ["@comment"] = { fg = M.base_30.green1 },
+    ["@variable.builtin"] = { fg = M.base_30.blue },
+    ["@constant.builtin"] = { fg = M.base_30.blue },
+    ["@number"] = { fg = M.base_30.sun },
+    ["@number.float"] = { fg = M.base_30.sun },
+    ["@property"] = { fg = M.base_30.cyan },
   },
 }
 

@@ -80,10 +80,12 @@ return {
           -- This line is essential to making automatic installation work
           -- :exploding-brain
           handlers = {},
-          automatic_installation = false,
+          automatic_installation = true,
           -- DAP servers: these will be installed by mason-tool-installer.nvim
           -- for consistency.
-          ensure_installed = {},
+          ensure_installed = {
+            "basedpyright"
+          },
         },
         dependencies = {
           "mfussenegger/nvim-dap",

@@ -1,25 +1,79 @@
+
 return {
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
-    opts = require "configs.conform",
+      opts = require "configs.conform",
   },
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
-    end,
+      end,
   },
   {
     "kylechui/nvim-surround",
     version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
+      event = "VeryLazy",
     config = function()
       require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
+          -- Configuration here, or leave empty to use defaults
+          })
     end
+  },
+  {
+    'saghen/blink.cmp',
+    -- optional: provides snippets for the snippet source
+      dependencies = { 'rafamadriz/friendly-snippets' },
+
+    -- use a release tag to download pre-built binaries
+      version = '1.*',
+    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+      -- build = 'cargo build --release',
+    -- If you use nix, you can build from source using latest nightly rust with:
+      -- build = 'nix run .#build-plugin',
+
+    ---@module 'blink.cmp'
+      ---@type blink.cmp.Config
+      opts = {
+        -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+          -- 'super-tab' for mappings similar to vscode (tab to accept)
+          -- 'enter' for enter to accept
+          -- 'none' for no mappings
+          --
+          -- All presets have the following mappings:
+          -- C-space: Open menu or open docs if already open
+          -- C-n/C-p or Up/Down: Select next/previous item
+          -- C-e: Hide menu
+          -- C-k: Toggle signature help (if signature.enabled = true)
+          --
+          -- See :h blink-cmp-config-keymap for defining your own keymap
+          keymap = { preset = 'default' },
+
+        appearance = {
+          -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+            -- Adjusts spacing to ensure icons are aligned
+            nerd_font_variant = 'mono'
+        },
+
+        -- (Default) Only show the documentation popup when manually triggered
+          completion = { documentation = { auto_show = false } },
+
+        -- Default list of enabled providers defined so that you can extend it
+          -- elsewhere in your config, without redefining it, due to `opts_extend`
+          sources = {
+            default = { 'lsp', 'path', 'snippets', 'buffer' },
+          },
+
+        -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+          -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+        -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+          --
+          -- See the fuzzy documentation for more information
+          fuzzy = { implementation = "prefer_rust_with_warning" }
+      },
+    opts_extend = { "sources.default" }
   },
   {
     "coder/claudecode.nvim",
@@ -85,7 +139,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     tag = "v2.20.8",  -- Use v2
-    event = "BufReadPost",
+      event = "BufReadPost",
     config = function()
       vim.opt.list = true
       require("indent_blankline").setup {
@@ -118,7 +172,7 @@ return {
       vim.keymap.set('n', '<leader><leader>j', require('smart-splits').swap_buf_down)
       vim.keymap.set('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
       vim.keymap.set('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
-    end,
+      end,
   },
   {
     "sindrets/winshift.nvim",
@@ -133,64 +187,29 @@ return {
     },
     config = function()
       require("winshift").setup({})
-    end,
+      end,
   },
-  -- Disabled in favor of tokyonight
-  -- {
-  --   "gmr458/vscode_modern_theme.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --       require("vscode_modern").setup({
-  --           cursorline = true,
-  --           transparent_background = false,
-  --           nvim_tree_darker = true,
-  --       })
-  --       vim.cmd.colorscheme("vscode_modern")
-  --   end,
-  -- },
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require("tokyonight").setup({
-  --       style = "night", -- Options: "storm", "moon", "night", "day"
-  --       transparent = false,
-  --       terminal_colors = true,
-  --       styles = {
-  --         comments = { italic = true },
-  --         keywords = { italic = false },
-  --         functions = {},
-  --         variables = {},
-  --       },
-  --       on_highlights = function(hl, c)
-  --         -- Custom highlight overrides similar to your base46 config
-  --         hl["@keyword.exception"] = { link = "Conditional" }
-  --         hl["@variable.member"] = { fg = c.blue }
-  --       end,
-  --     })
-  --     vim.cmd.colorscheme("tokyonight")
-  --   end,
-  -- },
-  -- {
-  --   "askfiy/visual_studio_code",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd([[colorscheme visual_studio_code]])
-  --   end,
-  -- },
-  -- test new blink
-  -- { import = "nvchad.blink.lazyspec" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    build = ":TSUpdate",
+    config = function ()
+      local treesitter = require("nvim-treesitter")
+      treesitter.setup()
+      treesitter.install { 'python', 'java', 'c', 'lua', 'vim', 'vimdoc', 'query', 'html', 'yaml'}
 
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+    vim.api.nvim_create_autocmd('FileType', {
+        pattern = { 'python', 'java', 'c', 'lua', 'vim', 'vimdoc', 'query', 'html', 'yaml' },
+        callback = function()
+        -- syntax highlighting, provided by Neovim
+        vim.treesitter.start()
+        -- folds, provided by Neovim (I don't like folds)
+        -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        -- vim.wo.foldmethod = 'expr'
+        -- indentation, provided by nvim-treesitter
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+        })
+    end
+  }
 }

@@ -67,6 +67,7 @@ M.polish_hl = {
     ["@keyword.function"] = { fg = M.base_30.blue },
     ["@function"] = { fg = M.base_30.yellow },
     ["@function.call"] = { fg = M.base_30.yellow },
+    ["@function.method"] = { fg = M.base_30.yellow },
     ["@function.method.call"] = { fg = M.base_30.yellow },
     ["@function.builtin"] = { fg = M.base_30.yellow },
     ["@type"] = { fg = M.base_30.green },
@@ -77,6 +78,7 @@ M.polish_hl = {
     ["Include"] = { fg = M.base_16.base0E },
     ["Special"] = { fg = M.base_30.yellow },
     ["@string"] = { fg = M.base_16.base09 },
+    ["String"] = { fg = M.base_16.base09 },
     ["@punctuation.delimiter"] = { fg = M.base_30.white },
     ["@constructor.python"] = { fg = M.base_30.green },
     ["Boolean"] = { fg = M.base_30.blue },
@@ -86,6 +88,9 @@ M.polish_hl = {
     ["@number"] = { fg = M.base_30.sun },
     ["@number.float"] = { fg = M.base_30.sun },
     ["@property"] = { fg = M.base_30.cyan },
+    ["Statement"] = { fg = M.base_16.base0E },
+    ["Exception"] = { fg = M.base_16.base0E },
+    ["@lsp.type.selfParameter"] = { fg = M.base_30.blue },
   },
 }
 

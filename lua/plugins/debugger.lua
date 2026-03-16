@@ -34,6 +34,54 @@ return {
       },
 
       {
+        "<leader>dr",
+        function() require("dap").repl.open() end,
+        desc = "Inspect"
+      },
+
+      {
+        "<leader>dk",
+        function() require("dap").terminate() end,
+        desc = "Kill"
+      },
+
+      {
+        "<leader>dso",
+        function() require("dap").step_over() end,
+        desc = "Step Over"
+      },
+
+      {
+        "<A-Right>",
+        function() require("dap").step_over() end,
+        desc = "Step Over"
+      },
+      
+      {
+        "<leader>dsi",
+        function() require("dap").step_into() end,
+        desc = "Step Into"
+      },
+
+      {
+        "<A-Down>",
+        function() require("dap").step_into() end,
+        desc = "Step Into"
+      },
+
+      {
+        "<leader>dsu",
+        function() require("dap").step_out() end,
+        desc = "Step Out"
+      },
+
+      {
+        "<A-Up>",
+        function() require("dap").step_out() end,
+        desc = "Step Out"
+      },
+
+      {
         "<leader>dC",
         function() require("dap").run_to_cursor() end,
         desc = "Run to Cursor"
